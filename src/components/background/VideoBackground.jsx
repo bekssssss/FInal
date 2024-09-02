@@ -1,4 +1,5 @@
 import './background.css'
+import {Link} from "react-router-dom";
 
 const VideoBackground = () => {
     return (
@@ -13,9 +14,11 @@ const VideoBackground = () => {
                     <h1 className="h-content">Аренда авто премиум класса в Бишкеке</h1>
                     <p className="p-content">Выберите автопарк:</p>
                     <div className="buttons">
-                        <button>
-                            Бишкек
-                        </button>
+                        <Link to={"/autoPark"}>
+                            <button>
+                                Бишкек
+                            </button>
+                        </Link>
                         {/*<button>*/}
                         {/*    Ош*/}
                         {/*</button>*/}

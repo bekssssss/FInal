@@ -1,5 +1,5 @@
 import React from 'react';
-import cls from './downFooter.module.css'
+import cls from './downFooter.module.scss'
 import Location from './../../../assets/location.svg'
 import Time from './../../../assets/time.svg'
 import Phone from './../../../assets/phone.svg'
@@ -8,6 +8,8 @@ import Tiktok from './../../../assets/tiktok.svg'
 import Youtube from './../../../assets/youtube.svg'
 import Vkontakte from './../../../assets/vk.svg'
 import Instagram from './../../../assets/insta.svg'
+import logo from './../../../assets/Logotype.png'
+
 
 const DownFooter = () => {
     return (
@@ -17,7 +19,7 @@ const DownFooter = () => {
                     <div className={cls.sections}>
                         <div className={cls.logo}>
                             <span>
-                            LOGO
+                            <img src={logo} alt=""/>
                         </span>
                             <h4>
                                 Аренда премиальных авто
@@ -46,7 +48,7 @@ const DownFooter = () => {
                         </span>
                         <p>
                             <img src={Location} alt=""/>
-                            Адрес
+                            Бишкек
                         </p>
                             <p>
                                 <img src={Time} alt=""/>
