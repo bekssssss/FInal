@@ -4,7 +4,7 @@ import {registerByEmail} from "../service/registerByEmail.js";
 
 const initialState = {
     username: "",
-    phone_number: "",
+    email: "",
     password: "",
     password2: "",
     isLoading: false,
@@ -19,13 +19,11 @@ export const authSlice = createSlice({
     initialState,
     reducers: {
         set: (state, action) => {
-           if (action.type === "SET_USERNAME") {
-               state.username = action.payload.username;
-           } else if (action.type === "SET_PASSWORD") {
-               state.password = action.payload.password;
-           } else if (action.type === "SET_PASSWORD2") {
-               state.password2 = action.payload.password;
-           }
+           const { payload : { type , payload  } } = action;
+
+            console.log(type);
+
+           state[type] = payload;
         }
     },
     extraReducers: (builder) => {

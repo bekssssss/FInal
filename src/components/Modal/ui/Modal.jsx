@@ -1,9 +1,6 @@
-import React from 'react';
-
 import cls from "./Modal.module.scss"
 
-const Modal = (props) => {
-    const { children, ref } = props
+const Modal = ({ref, children}) => {
 
     return (
         <div className={cls.main}>
