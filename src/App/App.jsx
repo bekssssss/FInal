@@ -12,6 +12,7 @@ import CarDetail from "../components/cardetails/CarDetail.jsx";
 import DownFooter from "../components/footer/downFooter/DownFooter.jsx";
 import Auth from "../components/auth/ui/Auth.jsx";
 
+
 const App = () => {
     return (
         <div>

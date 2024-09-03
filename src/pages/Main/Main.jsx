@@ -19,6 +19,7 @@ const Main = () => {
             <CarSlider/>
             <CarDetail/>
             {/*<CommentSection/>*/}
+
             <UpFooter/>
         </div>
     );

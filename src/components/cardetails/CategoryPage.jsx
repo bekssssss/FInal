@@ -9,7 +9,6 @@ const CategoryPage = ({ categoryOfcar, currentCarName }) => {
         const fetchCategories = async () => {
             try {
                 const response = await axios.get('https://ash2521.pythonanywhere.com/index/');
-                // Находим категорию по названию
                 const category = response.data.categories.find(cat => cat.title === categoryOfcar);
                 if (category) {
                     setCategoryId(category.id);
@@ -27,8 +26,7 @@ const CategoryPage = ({ categoryOfcar, currentCarName }) => {
     }
 
     return (
-        <div>
-            {/* Передаем currentCarName в SimilarCars */}
+        <div className={'mt-5'}>
             <SimilarCars categoryId={categoryId} currentCarName={currentCarName} />
         </div>
     );

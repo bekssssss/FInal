@@ -1,0 +1,83 @@
+.price-filter {
+  position: relative;
+  display: inline-block;
+  width: 200px;
+
+}
+
+.price-filter-btn {
+  background-color: #1c1b1b;
+  color: white;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  width: 200px; /* Ширина кнопки, можно настроить под нужды */
+}
+
+.price-filter-btn:hover {
+  background-color: #555;
+}
+
+.price-filter-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: absolute;
+  top: 0;
+  left: 120%; /* Располагаем блок с полями ввода справа от кнопки */
+  border-radius: 4px;
+  padding: 10px;
+  z-index: 1000; /* Убедитесь, что блок находится выше других элементов */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(10px); /* Сдвигаем блок немного вправо для анимации */
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+
+.price-filter-content.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0); /* Возвращаем блок на своё место */
+}
+
+.price-filter-content h3 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.price-filter-content label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+.price-filter-content input[type="number"] {
+  margin-left: 10px;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 100px;
+  font-size: 14px;
+}
+
+.price-filter-content button {
+  background-color: #1c1b1b;
+  color: white;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.price-filter-content button:hover {
+  background-color: #555;
+}

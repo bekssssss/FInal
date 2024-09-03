@@ -25,7 +25,7 @@ const CarDetails = () => {
     useEffect(() => {
         axios.get(`https://ash2521.pythonanywhere.com/cars/${id}/details/`, {
             headers: {
-                'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI1MzU4NjM1LCJpYXQiOjE3MjUxODU4MzUsImp0aSI6ImM4YmM0Y2EyMjdjZjQyNWU4MWJiYTY5NDgzNzQyZWYwIiwidXNlcl9pZCI6Mn0.r49sPBGa7D7GfPt-Sfj9PpsPHzmMxZ8BBq6yNQu34v4`
+                'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI1MzgwMDY5LCJpYXQiOjE3MjUyMDcyNjksImp0aSI6IjA2NTM2OGUxMGY2ZjQ5Y2ZiY2VhYWQ4Yzc1ZWNiYjNmIiwidXNlcl9pZCI6Mn0.W9Pgv5NBgo7qnA8u9wnSoOgAW7F4r1xDp9MAoBd29tg`
             }
         })
             .then(response => {
@@ -41,7 +41,6 @@ const CarDetails = () => {
         return <div className={'hidden'}>Loading...</div>;
     }
 
-    // Кнопка "Назад"
     const BackButton = () => {
         const goBack = () => {
             navigate(-1);
@@ -71,7 +70,6 @@ const CarDetails = () => {
         );
     };
 
-    // Настройки для слайдера
     const settings = {
         dots: true,
         infinite: true,
@@ -95,6 +93,7 @@ const CarDetails = () => {
                 <div>
                     <h2 className="text-4xl font-bold">{car.title}</h2>
                     <BackButton/>
+
                 </div>
                 <div className="flex gap-3 mt-6 justify-center">
                     <p className={'flex items-center gap-2'}>
