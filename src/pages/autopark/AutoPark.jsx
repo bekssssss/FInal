@@ -1,19 +1,23 @@
+// src/pages/autopark/AutoPark.jsx
+import React, { useState, useEffect } from 'react';
 import cls from './autopark.module.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import Gwagon from "../categoryList/assets/GElik.webp";
 import Cabrio from "../categoryList/assets/Cabrio.webp";
 import Sportcar from "../categoryList/assets/Sportcar.webp";
 import Premium from "../categoryList/assets/Premium.webp";
 import Coupe from "../categoryList/assets/Coupe.webp";
 import Electro from "../categoryList/assets/Electro.webp";
-import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import '../../components/CarSlider/CarSlider.scss';
+import axios from 'axios';
 import Dropdown from "./Dropdown.jsx";
+import PriceFilter from "./PriceFilter.jsx";
 
 const AutoPark = () => {
     const [cars, setCars] = useState([]);
+    const [filteredCars, setFilteredCars] = useState([]);
+    const [selectedBrands, setSelectedBrands] = useState([]);
+    const [priceRange, setPriceRange] = useState({ minPrice: 0, maxPrice: Infinity });
+    const [favorites, setFavorites] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -27,6 +31,7 @@ const AutoPark = () => {
 
                 const allCars = responses.flatMap(response => response.data.results);
                 setCars(allCars);
+                setFilteredCars(allCars);
             } catch (error) {
                 console.log(error);
             }
@@ -34,6 +39,16 @@ const AutoPark = () => {
 
         fetchData();
     }, []);
+
+    useEffect(() => {
+        const filtered = cars.filter(car => {
+            const inPriceRange = car.price_day >= priceRange.minPrice && car.price_day <= priceRange.maxPrice;
+            const inBrandSelection = selectedBrands.length === 0 || selectedBrands.includes(car.brand);
+            return inPriceRange && inBrandSelection;
+        });
+        setFilteredCars(filtered);
+    }, [selectedBrands, priceRange, cars]);
+
 
     function BackButton() {
         const navigate = useNavigate();
@@ -104,14 +119,19 @@ const AutoPark = () => {
                         </Link>
                     </div>
                 </div>
-                <Dropdown />
+                <div className={cls.filters}>
+                    <div className={'flex items-baseline gap-5 mt-3.5'}>
+                        <Dropdown onBrandSelect={setSelectedBrands} />
+                        <PriceFilter onPriceRangeSelect={setPriceRange} />
+                    </div>
+                </div>
             </div>
 
             <div className='flex flex-wrap px-1'>
-                {cars.length > 0 ? (
-                    cars.map((car, index) => (
-                        <div key={index} className="w-1/3 px-1 mt-1 h-96" onClick={() => handleCardClick(car.id)}>
-                            <div className="card-container">
+                {filteredCars.length > 0 ? (
+                    filteredCars.map((car, index) => (
+                        <div key={index} className="w-1/3 px-1 mt-1 h-96 relative">
+                            <div className="card-container" onClick={() => handleCardClick(car.id)}>
                                 <img
                                     src={car.img_front}
                                     alt={car.title}

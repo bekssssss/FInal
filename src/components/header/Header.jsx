@@ -1,7 +1,7 @@
-import cls from './header.module.css'
-import logo from './../../assets/Logotype.png'
-import {Link} from "react-router-dom";
-import {useState} from 'react';
+import React, { useState } from 'react';
+import cls from './header.module.css';
+import logo from './../../assets/Logotype.png';
+import { Link } from 'react-router-dom';
 import Modal from 'react-modal';
 import {useSelector} from "react-redux";
 
@@ -18,11 +18,11 @@ const Header = (props) => {
                 <div className={cls.container}>
                     <div className="flex items-center justify-between">
                         <nav className="flex items-center gap-5">
-                            <Link to={"/"}>
-                                <img className={cls.logo} src={logo} alt="#"/>
+                            <Link to="/">
+                                <img className={cls.logo} src={logo} alt="Logo"/>
                             </Link>
-                            <Link to={"/autoPark"}>
-                                <a href="">Автопарк</a>
+                            <Link to="/autoPark">
+                                <p>Автопарк</p>
                             </Link>
                             <button onClick={openModal}>Контакты</button>
                             <Modal
@@ -50,7 +50,9 @@ const Header = (props) => {
                                 <p>ПОЧТА</p>
                                 <button onClick={closeModal} style={{marginTop: '20px'}}>Закрыть</button>
                             </Modal>
-                            <p href="">Отзывы</p>
+                            <Link to="/reviews">
+                                <p>Отзывы</p>
+                            </Link>
                         </nav>
                         <nav className="flex items-center gap-5">
                             {
@@ -63,7 +65,6 @@ const Header = (props) => {
                                         <button onClick={() => props.setIsStateModal(true)}>Зарегистрироваться</button>
                                     </>
                             }
-
                         </nav>
                     </div>
                 </div>

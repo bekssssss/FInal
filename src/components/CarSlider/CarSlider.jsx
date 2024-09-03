@@ -6,7 +6,7 @@ import './CarSlider.scss';
 
 const NextArrow = ({ onClick }) => (
     <div
-        className="cursor-pointer border-1 border-zinc-500 absolute top-0 right-5 mt-2 mr-2 z-10 text-white px-3 py-2 duration-500 delay-100 hover:border-zinc-50"
+        className="cursor-pointer border border-zinc-500 absolute top-0 right-5 mt-2 mr-2 z-10 text-white px-5 py-2 duration-500 delay-100 hover:border-zinc-50"
         onClick={onClick}
     >
         <button>
@@ -21,7 +21,7 @@ const NextArrow = ({ onClick }) => (
 
 const PrevArrow = ({ onClick }) => (
     <div
-        className="cursor-pointer border-1 border-zinc-500 absolute top-0 right-20 mt-2 ml-2 z-10 text-white px-3 py-2 rotate-180 duration-500 delay-100 hover:border-zinc-50"
+        className="cursor-pointer border border-zinc-500 absolute top-0 right-20 mt-2 ml-2 z-10 text-white px-5 py-2 rotate-180 duration-500 delay-100 hover:border-zinc-50"
         onClick={onClick}
     >
         <button>

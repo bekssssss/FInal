@@ -17,6 +17,7 @@ import Modal from "react-modal";
 import {useDispatch} from "react-redux";
 import {fastAuthWithRefreshToken} from "../feature/service/fastAuthWithRefreshToken.js";
 
+
 const App = () => {
     const [isStateModal, setIsStateModal] = useState(false);
     const dispatch = useDispatch();

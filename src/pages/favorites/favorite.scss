@@ -1,0 +1,43 @@
+.favorites {
+  padding: 20px;
+}
+
+.favorites-list {
+  list-style: none;
+  padding: 0;
+}
+
+.favorites-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f9f9f9;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+
+.car-info {
+  h3 {
+    margin: 0;
+    font-size: 20px;
+  }
+
+  p {
+    margin: 5px 0 0;
+    color: #666;
+  }
+}
+
+.remove-button {
+  background-color: #c00;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.remove-button:hover {
+  background-color: #900;
+}
