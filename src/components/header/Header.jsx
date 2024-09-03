@@ -3,8 +3,10 @@ import cls from './header.module.css';
 import logo from './../../assets/Logotype.png';
 import { Link } from 'react-router-dom';
 import Modal from 'react-modal';
+import {useSelector} from "react-redux";
 
-const Header = () => {
+const Header = (props) => {
+    const authData = useSelector((state) => state.auth);
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
     const openModal = () => setModalIsOpen(true);
@@ -46,30 +48,30 @@ const Header = () => {
                                 <h2>БРЕНД</h2>
                                 <p>НОМЕР</p>
                                 <p>ПОЧТА</p>
-                                <button onClick={closeModal} style={{ marginTop: '20px' }}>Закрыть</button>
+                                <button onClick={closeModal} style={{marginTop: '20px'}}>Закрыть</button>
                             </Modal>
                             <Link to="/reviews">
                                 <p>Отзывы</p>
                             </Link>
                         </nav>
                         <nav className="flex items-center gap-5">
-                            <Link to="/login">
-                                <p href="#">Войти</p>
-                            </Link>
-                            <Link to="/register">
-                                <p href="#">Зарегистрироваться</p>
-                            </Link>
-                            {/*<Link to="/favorites">*/}
-                            {/*    <button className={cls.favoritesButton}>*/}
-                            {/*        Избранное*/}
-                            {/*    </button>*/}
-                            {/*</Link>*/}
+                            {
+                                authData.successAuth
+                                    ?
+                                    <div>авторизация гуд</div>
+                                    :
+                                    <>
+                                        <button onClick={() => props.setIsStateModal(true)}>Войти</button>
+                                        <button onClick={() => props.setIsStateModal(true)}>Зарегистрироваться</button>
+                                    </>
+                            }
                         </nav>
                     </div>
                 </div>
             </div>
         </>
-    );
+    )
+        ;
 };
 
 export default Header;

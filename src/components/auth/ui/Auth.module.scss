@@ -1,3 +1,27 @@
 .main {
 
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+
+    input {
+      border: 1px solid white;
+      border-radius: 20px;
+      background-color: #1d1c1e;
+      color: white;
+      padding: 10px 20px;
+      margin-bottom: 10px;
+      outline: none;
+    }
+  }
+
+  button {
+    background-color: #232323;
+    padding: 10px 20px;
+    border-radius: 20px;
+  }
 }

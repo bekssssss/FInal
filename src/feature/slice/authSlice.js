@@ -1,16 +1,16 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {loginByEmail} from "../service/loginByEmail.js";
 import {registerByEmail} from "../service/registerByEmail.js";
+import {fastAuthWithRefreshToken} from "../service/fastAuthWithRefreshToken.js";
 
 const initialState = {
     username: "",
-    phone_number: "",
+    email: "",
     password: "",
     password2: "",
     isLoading: false,
     errors: [],
-    successLogin: false,
-    successRegister: false,
+    successAuth: false,
 
 }
 
@@ -19,13 +19,11 @@ export const authSlice = createSlice({
     initialState,
     reducers: {
         set: (state, action) => {
-           if (action.type === "SET_USERNAME") {
-               state.username = action.payload.username;
-           } else if (action.type === "SET_PASSWORD") {
-               state.password = action.payload.password;
-           } else if (action.type === "SET_PASSWORD2") {
-               state.password2 = action.payload.password;
-           }
+           const { payload : { type , payload  } } = action;
+
+            console.log(type);
+
+           state[type] = payload;
         }
     },
     extraReducers: (builder) => {
@@ -35,7 +33,7 @@ export const authSlice = createSlice({
             })
             .addCase(loginByEmail.fulfilled, (state) => {
                 state.isLoading = false;
-                state.successLogin = true
+                state.successAuth = true
             })
             .addCase(loginByEmail.rejected, (state, action) => {
                 state.isLoading = false;
@@ -47,11 +45,22 @@ export const authSlice = createSlice({
             })
             .addCase(registerByEmail.fulfilled, (state) => {
                 state.isLoading = false;
-                state.successRegister = true
+                state.successAuth = true
             })
             .addCase(registerByEmail.rejected, (state, action) => {
                 state.isLoading = false;
                 state.errors = state.errors.push(action.payload);
+            });
+        builder
+            .addCase(fastAuthWithRefreshToken.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(fastAuthWithRefreshToken.fulfilled, (state) => {
+                state.isLoading = false;
+                state.successAuth = true
+            })
+            .addCase(fastAuthWithRefreshToken.rejected, (state) => {
+                state.isLoading = false;
             })
 
     }
