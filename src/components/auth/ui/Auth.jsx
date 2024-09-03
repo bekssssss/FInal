@@ -26,8 +26,9 @@ const Auth = ({setIsStateModal}) => {
             email
         }) : loginByEmail({username, password}))
 
-
         if (result.meta.requestStatus === "fulfilled") {
+            console.log(result)
+            localStorage.setItem("token", result.payload.data.refresh)
             setIsStateModal(false)
         }
     }

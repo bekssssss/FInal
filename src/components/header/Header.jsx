@@ -54,7 +54,7 @@ const Header = (props) => {
                         </nav>
                         <nav className="flex items-center gap-5">
                             {
-                                authData.successRegister || authData.successLogin
+                                authData.successAuth
                                     ?
                                     <div>авторизация гуд</div>
                                     :

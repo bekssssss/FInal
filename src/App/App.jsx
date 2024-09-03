@@ -14,9 +14,22 @@ import CarDetail from '../components/cardetails/CarDetail.jsx';
 import DownFooter from '../components/footer/downFooter/DownFooter.jsx';
 import Auth from '../components/auth/ui/Auth.jsx';
 import Modal from "react-modal";
+import {useDispatch} from "react-redux";
+import {fastAuthWithRefreshToken} from "../feature/service/fastAuthWithRefreshToken.js";
 
 const App = () => {
     const [isStateModal, setIsStateModal] = useState(false);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        const refreshTokenForFastAuth = localStorage.getItem("token");
+        const objRefreshTokenForFastAuth = {
+            refresh: refreshTokenForFastAuth
+        }
+        if (refreshTokenForFastAuth) {
+            dispatch(fastAuthWithRefreshToken(objRefreshTokenForFastAuth))
+        }
+    }, [dispatch]);
 
     useEffect(() => {
         document.body.style.overflow = isStateModal ? 'hidden' : '';
@@ -43,7 +56,7 @@ const App = () => {
                 onRequestClose={() => setIsStateModal(false)}
                 style={{
                     content: {
-                        width:"600px",
+                        width: "600px",
                         height: "500px",
                         margin: 'auto',
                         backgroundColor: "#171717",
