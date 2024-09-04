@@ -6,8 +6,8 @@ import CarSlider from "../../components/CarSlider/CarSlider.jsx";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import CarDetail from "../../components/cardetails/CarDetail.jsx";
-import CommentSection from "../../components/cardetails/CommentSection.jsx";
-import React from "react";
+import CommentSection from "../../components/MainComment/CommentSection.jsx";
+import Comment from "../../components/MainComment/Comment.jsx";
 
 
 const Main = () => {
@@ -18,7 +18,13 @@ const Main = () => {
             <AutoparkButton/>
             <CarSlider/>
             <CarDetail/>
-            {/*<CommentSection/>*/}
+            <div className="p-6 mx-14 border-2 my-6 mt-40">
+                <h3 className="text-white text-xl mb-4">Комментарии</h3>
+                <CommentSection/>
+                <div className={'flex gap-4'}>
+                    <Comment/>
+                </div>
+            </div>
 
             <UpFooter/>
         </div>

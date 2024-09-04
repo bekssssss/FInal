@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 const SimilarCars = ({ categoryId, currentCarName }) => {
     const navigate = useNavigate();
     const [cars, setCars] = useState([]);
+
     useEffect(() => {
         axios.get(`https://ash2521.pythonanywhere.com/cars/?category=${categoryId}`, {
             headers: {
@@ -12,12 +13,8 @@ const SimilarCars = ({ categoryId, currentCarName }) => {
             }
         })
             .then(response => {
-                // Фильтруем машины, чтобы исключить текущую машину по названию
                 const filteredCars = response.data.results.filter(car => car.title !== currentCarName);
-
-                // Ограничиваем количество отображаемых машин до 3
                 setCars(filteredCars.slice(0, 3));
-                console.log(filteredCars);
             })
             .catch(error => {
                 console.log(error);
@@ -25,6 +22,7 @@ const SimilarCars = ({ categoryId, currentCarName }) => {
     }, [categoryId, currentCarName]);
 
     const handleCardClick = (id) => {
+        window.scrollTo(0, 0); // Скроллит вверх
         navigate(`/car/${id}`);
     };
 
@@ -33,13 +31,22 @@ const SimilarCars = ({ categoryId, currentCarName }) => {
             <h2 className="text-xl font-bold mb-4">Похожие автомобили</h2>
             <div className="flex justify-between">
                 {cars.map((car, index) => (
-                    <div key={index} className="p-3 mt-10 h-72 " onClick={() => handleCardClick(car.id)}>
+                    <div
+                        key={index}
+                        className="p-3 mt-10 h-72 cursor-pointer"
+                        onClick={() => handleCardClick(car.id)}
+                    >
                         <div className="card-container">
                             <img src={car.img_front} alt={car.name} className="card-image h-96" />
                             <div className="card-gradient-top"></div>
-                            <div className="card-info-top">
-                                <p className="text-lg">{car.title}</p>
-                                <p className="mt-2 text-sm">{car.price_day} Р/сут.</p>
+                            <div className="card-info-top flex justify-between w-full">
+                                <div>
+                                    <p className="text-lg">{car.title}</p>
+                                    <p className="mt-2 text-sm">{car.price_day} Р/сут.</p>
+                                </div>
+                                <div>
+                                    <p className={`rounded px-2 py-1 text-sm ${car.status === 'Свободен' ? 'bg-green-600' : 'bg-red-600'}`}>{car.status}</p>
+                                </div>
                             </div>
                             <div className="card-gradient-bottom"></div>
                             <div className="card-info-bottom">
