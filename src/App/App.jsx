@@ -16,6 +16,7 @@ import Auth from '../components/auth/ui/Auth.jsx';
 import Modal from "react-modal";
 import {useDispatch} from "react-redux";
 import {fastAuthWithRefreshToken} from "../feature/service/fastAuthWithRefreshToken.js";
+import UserPage from "../pages/user/UserPage.jsx";
 
 
 const App = () => {
@@ -23,13 +24,20 @@ const App = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        const refreshTokenForFastAuth = localStorage.getItem("token");
+
+        const refreshTokenForFastAuth = localStorage.getItem("refresh");
         const objRefreshTokenForFastAuth = {
             refresh: refreshTokenForFastAuth
         }
+
         if (refreshTokenForFastAuth) {
             dispatch(fastAuthWithRefreshToken(objRefreshTokenForFastAuth))
         }
+
+        return () => {
+            console.log("app покинул dom")
+        }
+
     }, [dispatch]);
 
     useEffect(() => {
@@ -41,6 +49,7 @@ const App = () => {
             <Header setIsStateModal={setIsStateModal}/>
             <Routes>
                 <Route path="" element={<Main/>}/>
+                <Route path="/UserPage" element={<UserPage/>}/>
                 <Route path="/OffRoad" element={<OffRoad/>}/>
                 <Route path="/Cabriolets" element={<Cabriolets/>}/>
                 <Route path="/Sportcars" element={<Sportcars/>}/>

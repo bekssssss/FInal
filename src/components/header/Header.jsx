@@ -4,6 +4,7 @@ import logo from './../../assets/Logotype.png';
 import { Link } from 'react-router-dom';
 import Modal from 'react-modal';
 import {useSelector} from "react-redux";
+import UserPage from "../../pages/user/UserPage.jsx";
 
 const Header = (props) => {
     const authData = useSelector((state) => state.auth);
@@ -56,15 +57,21 @@ const Header = (props) => {
                         </nav>
                         <nav className="flex items-center gap-5">
                             {
-                                authData.successAuth
-                                    ?
-                                    <div>авторизация гуд</div>
-                                    :
+                                authData.successAuth ? (
+                                    <>
+                                        <div>авторизация гуд</div>
+                                        <Link to="/UserPage">
+                                            <p>Профиль</p>
+                                        </Link>
+                                    </>
+                                ) : (
                                     <>
                                         <button onClick={() => props.setIsStateModal(true)}>Войти</button>
                                         <button onClick={() => props.setIsStateModal(true)}>Зарегистрироваться</button>
                                     </>
+                                )
                             }
+
                         </nav>
                     </div>
                 </div>

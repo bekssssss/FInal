@@ -2,6 +2,7 @@ import {createSlice} from "@reduxjs/toolkit";
 import {loginByEmail} from "../service/loginByEmail.js";
 import {registerByEmail} from "../service/registerByEmail.js";
 import {fastAuthWithRefreshToken} from "../service/fastAuthWithRefreshToken.js";
+import {getProfile} from "../service/getProfile.js";
 
 const initialState = {
     username: "",
@@ -61,6 +62,19 @@ export const authSlice = createSlice({
             })
             .addCase(fastAuthWithRefreshToken.rejected, (state) => {
                 state.isLoading = false;
+            });
+        builder
+            .addCase(getProfile.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(getProfile.fulfilled, (state, action) => {
+                console.log(action)
+                state.isLoading = false;
+                state.username = action.payload.username
+                state.email = action.payload.email
+            })
+            .addCase(getProfile.rejected, (state) => {
+                state.isLoading = false
             })
 
     }

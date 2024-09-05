@@ -7,7 +7,8 @@ export const loginByEmail = createAsyncThunk(
         console.log(data);
         try {
             const response = await $api.post("login/", data)
-            localStorage.setItem("token", response.data.token);
+            localStorage.setItem("refresh", response.data.refresh)
+            localStorage.setItem("access", response.data.access)
             return thunkAPI.fulfillWithValue(response)
 
         } catch (error) {

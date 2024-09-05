@@ -7,7 +7,7 @@ export const fastAuthWithRefreshToken = createAsyncThunk(
         try {
             const response = await $api.post("token/refresh/", token);
             console.log(response.data)
-            localStorage.setItem("token", response.data.token);
+            localStorage.setItem("access", response.data.access)
             return thunkAPI.fulfillWithValue(response)
         } catch (error) {
             return thunkAPI.rejectWithValue("Авторизация не прошла!");
