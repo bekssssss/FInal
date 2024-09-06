@@ -6,7 +6,7 @@ const VideoBackground = () => {
         <div className="main-background">
             <div className="video-container">
                 <video autoPlay loop muted playsInline className="video-background">
-                    <source src="./../../../public/videoplayback.mp4" type="video/mp4"/>
+                    <source src="./assets/videoplayback.mp4" type="video/mp4"/>
                     Ваш браузер не поддерживает данный формат :(
                 </video>
                 <div className="video-overlay"></div>

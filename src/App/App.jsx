@@ -48,7 +48,7 @@ const App = () => {
         <div className={cls.App}>
             <Header setIsStateModal={setIsStateModal}/>
             <Routes>
-                <Route path="" element={<Main/>}/>
+                <Route path="/" element={<Main/>}/>
                 <Route path="/UserPage" element={<UserPage/>}/>
                 <Route path="/OffRoad" element={<OffRoad/>}/>
                 <Route path="/Cabriolets" element={<Cabriolets/>}/>
