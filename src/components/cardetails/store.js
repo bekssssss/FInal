@@ -2,7 +2,6 @@ import axios from "axios";
 
 
 
-
 export const carsPage1 = async () => {
     try {
         const response = await axios.get(`https://ash2521.pythonanywhere.com/cars?page=1`);

@@ -41,7 +41,7 @@ const Auth = ({setIsStateModal}) => {
                        onChange={(e) => onChange(e.target)}/>
                 {isLogin ? <input placeholder="Почта/Email" type="text" value={data.email} id="email"
                                   onChange={(e) => onChange(e.target)}/> : ""}
-                <input placeholder="Пороль" type="text" value={data.password} id="password"
+                <input placeholder="Пароль" type="text" value={data.password} id="password"
                        onChange={(e) => onChange(e.target)}/>
                 {isLogin ? <input placeholder="Еше раз пороль" type="text" value={data.password2} id="password2"
                         onChange={(e) => onChange(e.target)}/>:""}
@@ -49,7 +49,7 @@ const Auth = ({setIsStateModal}) => {
                     отправить
                 </button>
             </form>
-            <button onClick={() => setIsLogin(prevState => !prevState)}>
+            <button className={'text-center'} onClick={() => setIsLogin(prevState => !prevState)}>
                 уже есть аккаунт
             </button>
         </div>

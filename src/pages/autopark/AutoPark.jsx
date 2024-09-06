@@ -1,4 +1,4 @@
-// src/pages/autopark/AutoPark.jsx
+
 import React, { useState, useEffect } from 'react';
 import cls from './autopark.module.css';
 import { useNavigate, Link } from 'react-router-dom';

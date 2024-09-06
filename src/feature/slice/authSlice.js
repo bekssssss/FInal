@@ -2,7 +2,8 @@ import {createSlice} from "@reduxjs/toolkit";
 import {loginByEmail} from "../service/loginByEmail.js";
 import {registerByEmail} from "../service/registerByEmail.js";
 import {fastAuthWithRefreshToken} from "../service/fastAuthWithRefreshToken.js";
-import {getProfile} from "../service/getProfile.js";
+import {getProfile} from "../service/getProfile.jsx";
+import updateProfile from "../service/UpdateProfileModal.js";
 
 const initialState = {
     username: "",
@@ -21,8 +22,6 @@ export const authSlice = createSlice({
     reducers: {
         set: (state, action) => {
            const { payload : { type , payload  } } = action;
-
-            console.log(type);
 
            state[type] = payload;
         }
@@ -75,8 +74,20 @@ export const authSlice = createSlice({
             })
             .addCase(getProfile.rejected, (state) => {
                 state.isLoading = false
+            });
+        builder
+            .addCase(updateProfile.pending, (state) => {
+                state.isLoading = true;
             })
-
+            .addCase(updateProfile.fulfilled, (state, action) => {
+                console.log(action)
+                state.isLoading = false;
+                state.username = action.payload.username
+                state.email = action.payload.email
+            })
+            .addCase(updateProfile.rejected, (state) => {
+                state.isLoading = false
+            })
     }
 })
 

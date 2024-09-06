@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 
-function CommentSection() {
+function MainCommentSection() {
     const [comment, setComment] = useState("");
     const [error, setError] = useState(null); // Состояние для хранения ошибки
 
@@ -22,7 +22,7 @@ function CommentSection() {
                 },
                 {
                     headers: {
-                        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI1MzU4NjM1LCJpYXQiOjE3MjUxODU4MzUsImp0aSI6ImM4YmM0Y2EyMjdjZjQyNWU4MWJiYTY5NDgzNzQyZWYwIiwidXNlcl9pZCI6Mn0.r49sPBGa7D7GfPt-Sfj9PpsPHzmMxZ8BBq6yNQu34v4`,
+                        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI1NTUyNzA2LCJpYXQiOjE3MjUzNzk5MDYsImp0aSI6IjgzZGUyNmMzYzUzZjQzODY4MzE0NDhiYWIwMWFhOGZjIiwidXNlcl9pZCI6Mn0.Q_vEZ2-2lnjKbRui3EioLQs0_UTuiTa-uPsx7e5cbkc`,
                         'Content-Type': 'application/json',
                     },
                 }
@@ -61,4 +61,4 @@ function CommentSection() {
     );
 }
 
-export default CommentSection;
+export default MainCommentSection;

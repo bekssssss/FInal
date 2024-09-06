@@ -13,6 +13,7 @@ import CategoryPage from "./CategoryPage.jsx";
 import Comment from './Comment.jsx'
 import StarRating from "./StarRating.jsx";
 import RentalPage from "./RentalPage.jsx";
+import token from './token.js';
 
 const CarDetails = () => {
     const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -26,7 +27,7 @@ const CarDetails = () => {
     useEffect(() => {
         axios.get(`https://ash2521.pythonanywhere.com/cars/${id}/details/`, {
             headers: {
-                'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI1NTUyNzA2LCJpYXQiOjE3MjUzNzk5MDYsImp0aSI6IjgzZGUyNmMzYzUzZjQzODY4MzE0NDhiYWIwMWFhOGZjIiwidXNlcl9pZCI6Mn0.Q_vEZ2-2lnjKbRui3EioLQs0_UTuiTa-uPsx7e5cbkc`
+                'Authorization': `Bearer ${token}`
             }
         })
             .then(response => {
@@ -84,7 +85,7 @@ const CarDetails = () => {
 
         axios.patch(`https://ash2521.pythonanywhere.com/cars/${id}/`, updatedCar, {
             headers: {
-                'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI1MzgwMDY5LCJpYXQiOjE3MjUyMDcyNjksImp0aSI6IjA2NTM2OGUxMGY2ZjQ5Y2ZiY2VhYWQ4Yzc1ZWNiYjNmIiwidXNlcl9pZCI6Mn0.W9Pgv5NBgo7qnA8u9wnSoOgAW7F4r1xDp9MAoBd29tg`
+                'Authorization': `Bearer ${token}`
             }
         })
             .then(response => {
@@ -204,12 +205,12 @@ const CarDetails = () => {
                 </div>
                 <div>
                     <p className="text-4xl font-bold">{car.car.price_day} сом/сутки</p>
-                    <a href={car.car.status === 'Свободен' ? '#rent' : undefined}>
+                    <a href={car.car.status === 2 ? '#rent' : undefined}>
                         <button
-                            className={`w-full py-3 font-bold mt-1 ${car.car.status === 'Свободен' ? 'bg-white text-black' : 'bg-red-600 text-white cursor-not-allowed'}`}
-                            disabled={car.car.status !== 'Свободен'}
+                            className={`w-full py-3 font-bold mt-1 ${car.car.status === 2 ? 'bg-white text-black' : 'bg-red-600 text-white cursor-not-allowed'}`}
+                            disabled={car.car.status !== 2}
                         >
-                            {car.car.status === 'Свободен' ? 'Забронировать' : 'На прокате'}
+                            {car.car.status === 2 ? 'Забронировать' : 'На прокате'}
                         </button>
                     </a>
                 </div>

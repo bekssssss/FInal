@@ -1,4 +1,4 @@
-import './background.css'
+import './background.scss'
 import {Link} from "react-router-dom";
 
 const VideoBackground = () => {
@@ -19,9 +19,6 @@ const VideoBackground = () => {
                                 Бишкек
                             </button>
                         </Link>
-                        {/*<button>*/}
-                        {/*    Ош*/}
-                        {/*</button>*/}
                     </div>
                 </div>
             </div>

@@ -6,8 +6,8 @@ import CarSlider from "../../components/CarSlider/CarSlider.jsx";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import CarDetail from "../../components/cardetails/CarDetail.jsx";
-import CommentSection from "../../components/MainComment/CommentSection.jsx";
-import Comment from "../../components/MainComment/Comment.jsx";
+import CommentSection from "../../components/MainComment/MainCommentSection.jsx";
+import MainComment from "../../components/MainComment/MainComment.jsx";
 
 
 const Main = () => {
@@ -22,7 +22,7 @@ const Main = () => {
                 <h3 className="text-white text-xl mb-4">Комментарии</h3>
                 <CommentSection/>
                 <div className={'flex gap-4'}>
-                    <Comment/>
+                    <MainComment/>
                 </div>
             </div>
 

@@ -46,9 +46,9 @@ const Header = (props) => {
                                     }
                                 }}
                             >
-                                <h2>БРЕНД</h2>
-                                <p>НОМЕР</p>
-                                <p>ПОЧТА</p>
+                                <h2>Kyrgyz Motors</h2>
+                                <p>+996555555555</p>
+                                <p>infomotors@kyrgyz.kg</p>
                                 <button onClick={closeModal} style={{marginTop: '20px'}}>Закрыть</button>
                             </Modal>
                             <Link to="/reviews">
@@ -59,15 +59,13 @@ const Header = (props) => {
                             {
                                 authData.successAuth ? (
                                     <>
-                                        <div>авторизация гуд</div>
                                         <Link to="/UserPage">
-                                            <p>Профиль</p>
+                                            <p>Мой профиль</p>
                                         </Link>
                                     </>
                                 ) : (
                                     <>
                                         <button onClick={() => props.setIsStateModal(true)}>Войти</button>
-                                        <button onClick={() => props.setIsStateModal(true)}>Зарегистрироваться</button>
                                     </>
                                 )
                             }
